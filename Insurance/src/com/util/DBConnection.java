@@ -8,7 +8,7 @@ public class DBConnection {
 	
 		 private String usernameDb="root";
 		 private String passwordDb="";
-		 private String urlDb= "jdbc:mysql://localhost:3306/final";
+		 private String urlDb= "jdbc:mysql://localhost:3306/insurance";
 		 private String driverName="com.mysql.jdbc.Driver";
 		 private static Connection conn;
 
@@ -16,7 +16,7 @@ public class DBConnection {
 		 public static Connection getdbConnect() {
 			    String usernameDb="root";
 				String passwordDb="";
-				String urlDb="jdbc:mysql://localhost:3306/art_galary";
+				String urlDb="jdbc:mysql://localhost:3306/insurance";
 				String driverName="com.mysql.jdbc.Driver";
 		 try {
 		 Class.forName(driverName);

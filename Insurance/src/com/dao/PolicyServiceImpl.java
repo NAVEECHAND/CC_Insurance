@@ -3,8 +3,11 @@ package com.dao;
 import com.exception.DatabaseConnectionException;
 import com.model.Client;
 import com.model.Policy;
+import com.util.DBConnection;
 
-import java.sql.Date;
+import java.sql.Connection;
+
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +20,8 @@ public class PolicyServiceImpl implements IPolicyService{
 
 	    @Override
 	    public boolean createPolicy(Policy policy) throws DatabaseConnectionException, SQLException {
+	    	Connection conn = DBConnection.getdbConnect();
+	    	
 	        String sql = "INSERT INTO Policy (policyId, policyNumber, startDate, endDate, premiumAmount, clientId) VALUES (?, ?, ?, ?, ?, ?)";
 	       
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -34,6 +39,7 @@ public class PolicyServiceImpl implements IPolicyService{
 
 	    @Override
 	    public Policy getPolicy(int policyId) throws DatabaseConnectionException, SQLException {
+	    	Connection conn = DBConnection.getdbConnect();
 	        String sql = "SELECT * FROM Policy WHERE policyId = ?";
 	     
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -63,6 +69,8 @@ public class PolicyServiceImpl implements IPolicyService{
 
 		@Override
 	    public List<Policy> getAllPolicies() throws DatabaseConnectionException, SQLException {
+			
+			Connection conn = DBConnection.getdbConnect();
 	        List<Policy> policies = new ArrayList<>();
 	        String sql = "SELECT * FROM Policy";
 	        PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -86,12 +94,13 @@ public class PolicyServiceImpl implements IPolicyService{
 
 	    @Override
 	    public boolean updatePolicy(Policy policy) throws DatabaseConnectionException, SQLException {
+	    	Connection conn = DBConnection.getdbConnect();
 	        String sql = "UPDATE Policy SET policyNumber = ?, startDate = ?, endDate = ?, premiumAmount = ?, clientId = ? WHERE policyId = ?";
 	        PreparedStatement pstmt = conn.prepareStatement(sql);
 
 	        pstmt.setString(1, policy.getPolicyNumber());
 	        pstmt.setDate(2, policy.getStartDate());
-	        pstmt.setDate(3, (Date) policy.getEndDate());
+	        pstmt.setDate(3, policy.getEndDate());
 	        pstmt.setDouble(4, policy.getAmount());
 	        pstmt.setInt(5, policy.getClient().getClientId());
 	        pstmt.setInt(6, policy.getPolicyId());
@@ -102,6 +111,7 @@ public class PolicyServiceImpl implements IPolicyService{
 
 	    @Override
 	    public boolean deletePolicy(int policyId) throws DatabaseConnectionException, SQLException {
+	    	Connection conn = DBConnection.getdbConnect();
 	        String sql = "DELETE FROM Policy WHERE policyId = ?";
 	        PreparedStatement pstmt = conn.prepareStatement(sql);
 	        pstmt.setInt(1, policyId);

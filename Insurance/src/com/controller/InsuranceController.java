@@ -22,6 +22,7 @@ public class InsuranceController {
 	            System.out.println("Press 5. Delete Policy");
 	            System.out.println("Press 0. Exit");
 	            System.out.println("");
+	            
 	            int input = sc.nextInt();
 	            if (input == 0) {
 	                System.out.println("Exiting. Thank you!");
@@ -44,7 +45,7 @@ public class InsuranceController {
 	                    break;
 	                case 2:
 	                    try {
-	                        List<Policy> policies = policyService.getAllPolicies();
+	                        List<Policy> policies = (List<Policy>) policyService.getAllPolicies();
 	                        for (Policy policy : policies) {
 	                            System.out.println(policy);
 	                        }

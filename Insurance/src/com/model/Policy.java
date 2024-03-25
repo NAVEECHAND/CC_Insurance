@@ -7,13 +7,13 @@ public class Policy {
 	 	private int policyId;
 	    private String policyNumber;
 	    private Date startDate;
-	    private java.util.Date endDate;
+	    private Date endDate;
 	    private Double amount;
 	    private Client client;
 	    
 		public Policy() {}
 
-		public Policy(int policyId, String policyNumber, LocalDate startDate, LocalDate endDate, Double amount,
+		public Policy(int policyId, String policyNumber, Date startDate, Date endDate, Double amount,
 				Client client) {
 			super();
 			this.policyId = policyId;
@@ -48,12 +48,12 @@ public class Policy {
 			this.startDate = startDate;
 		}
 
-		public java.util.Date getEndDate() {
+		public Date getEndDate() {
 			return endDate;
 		}
 
-		public void setEndDate(Date date) {
-			this.endDate = date;
+		public void setEndDate(Date endDate) {
+			this.endDate = endDate;
 		}
 
 		public Double getAmount() {

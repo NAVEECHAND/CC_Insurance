@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface IPolicyService {
 
-    void createPolicy(Policy policy) throws DatabaseConnectionException, SQLException;
+    boolean createPolicy(Policy policy) throws DatabaseConnectionException, SQLException;
 
     Policy getPolicy(int policyId) throws DatabaseConnectionException, SQLException;
 
     List<Policy> getAllPolicies() throws DatabaseConnectionException, SQLException;
 
-    void updatePolicy(Policy policy) throws DatabaseConnectionException, SQLException;
+    boolean updatePolicy(Policy policy) throws DatabaseConnectionException, SQLException;
 
-    void deletePolicy(int policyId) throws DatabaseConnectionException, SQLException;
+    boolean deletePolicy(int policyId) throws DatabaseConnectionException, SQLException;
 }
