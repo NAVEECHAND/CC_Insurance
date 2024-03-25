@@ -56,19 +56,15 @@ public class InsuranceController {
 	                case 3:
 	                    try {
 	                        System.out.println("Enter Policy Number: ");
-	                        String policyNumber = sc.next();
+	                        sc.next();
 	                        System.out.println("Enter Start Date (YYYY-MM-DD): ");
-	                        String startDate = sc.next();
+	                        sc.next();
 	                        System.out.println("Enter End Date (YYYY-MM-DD): ");
-	                        String endDate = sc.next();
+	                        sc.next();
 	                        System.out.println("Enter Amount: ");
-	                        Double Amount = sc.nextDouble();
+	                        sc.nextDouble();
 	                       
 	                        Policy newPolicy = new Policy();
-	                        newPolicy.setPolicyNumber(policyNumber);
-	                        newPolicy.setStartDate(java.sql.Date.valueOf(startDate));
-	                        newPolicy.setEndDate(java.sql.Date.valueOf(endDate));
-	                        newPolicy.setAmount(Amount);
 	                        
 	                        boolean created = policyService.createPolicy(newPolicy);
 	                        if (created) {
